@@ -76,7 +76,7 @@ var TaskCollectionView = Marionette.CollectionView.extend({
 		var newTaskTitle = $('.add').val();
 		$('.add').val('');
 		if (!newTaskTitle) return;
-		this.collection.add({ title: newTaskTitle });
+		this.collection.add(new TaskModel({ title: newTaskTitle }));
 	}
 });
 
