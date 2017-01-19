@@ -19,7 +19,11 @@ var TaskModel = Backbone.Model.extend({
 	},
 	toggle: function() {
 		this.save({ done:!this.get("done")});
-	}
+	},
+	clear: function() {
+		console.log('DELETED')
+      this.destroy();
+    }
 });	
 
 var TasksCollection = Backbone.Collection.extend({
@@ -36,13 +40,17 @@ var Task = Marionette.View.extend({
 	},
 	events: { 
 		"click @ui.edit": "editTask", 
-		"click @ui.toggle": "toggleDone" 
+		"click @ui.toggle": "toggleDone",
+		'click @ui.remove': 'removeModel'
 	},
 	triggers: {
-		'click @ui.remove': 'remove:model'
+		'click @ui.remove': 'remove:model',
 	},
 	initialize: function() {
-		// this.model.on('change', _.bind(this.render, this));
+		
+	},
+	removeModel: function(event){
+		this.model.clear();
 	},
 	template: function(model) {
 		var tmp = _.template('<span> <%= title %> </span><input class="remove" type="button" value="Удалить"><input class="toggle" type="button" value="Чек">');
@@ -67,6 +75,7 @@ var TaskCollectionView = Marionette.CollectionView.extend({
 	initialize: function(){
 		this.collection.on('change', _.bind(this.render, this));
 		$('.addtask').on('click', _.bind(this.addTask, this));
+		this.collection.fetch();
 	},
 	onChildviewRemoveModel (view) {
 		this.collection.remove(view.model);
