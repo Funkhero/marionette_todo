@@ -23,9 +23,11 @@ var TaskModel = Backbone.Model.extend({
 	fetch: function(){
 		 ajaxSync: true 
 	},
-	save: { 
-		new: "title", 
-		ajaxSync: true 
+	save: function (){ 
+		return {
+			new: "title", 
+			ajaxSync: true
+		} 
 	}
 });	
 
