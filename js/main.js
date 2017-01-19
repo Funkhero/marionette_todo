@@ -19,15 +19,6 @@ var TaskModel = Backbone.Model.extend({
 	},
 	toggle: function() {
 		this.save({ done:!this.get("done")});
-	},
-	fetch: function(){
-		 ajaxSync: true 
-	},
-	save: function (){ 
-		return {
-			new: "title", 
-			ajaxSync: true
-		} 
 	}
 });	
 
