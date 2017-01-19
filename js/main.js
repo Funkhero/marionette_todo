@@ -21,7 +21,6 @@ var TaskModel = Backbone.Model.extend({
 		this.save({ done:!this.get("done")});
 	},
 	clear: function() {
-		console.log('DELETED')
       this.destroy();
     }
 });	
