@@ -24,7 +24,7 @@ var TaskModel = Backbone.Model.extend({
 
 var TasksCollection = Backbone.Collection.extend({
 	model: TaskModel,
-	localStorage: new Backbone.LocalStorage("todos-backbone")
+	localStorage: new Store("todos-backbone")
 });
 
 var Task = Marionette.View.extend({
