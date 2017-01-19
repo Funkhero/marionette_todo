@@ -3,7 +3,7 @@ $(function() {
 var TaskModel = Backbone.Model.extend({
 	initialize: function() {
 		if (!this.get("title")) {
-			this.set({"title": this.defaults.title});
+			this.save({"title": this.defaults.title});
 		}
 	},
 	validate: function(attrs) {
@@ -22,6 +22,10 @@ var TaskModel = Backbone.Model.extend({
 	},
 	fetch: function(){
 		 ajaxSync: true 
+	},
+	save: { 
+		new: "title", 
+		ajaxSync: true 
 	}
 });	
 
