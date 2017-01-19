@@ -3,7 +3,7 @@ $(function() {
 var TaskModel = Backbone.Model.extend({
 	initialize: function() {
 		if (!this.get("title")) {
-			this.save({"title": this.defaults.title});
+			this.set({"title": this.defaults.title});
 		}
 	},
 	validate: function(attrs) {
@@ -30,8 +30,8 @@ var TaskModel = Backbone.Model.extend({
 });	
 
 var TasksCollection = Backbone.Collection.extend({
-	localStorage: new Backbone.LocalStorage("SomeCollection"),
-	model: TaskModel
+	model: TaskModel,
+	localStorage: new Backbone.LocalStorage("todos-backbone")
 });
 
 var Task = Marionette.View.extend({
