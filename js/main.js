@@ -52,7 +52,7 @@ var Task = Marionette.View.extend({
 		this.model.clear();
 	},
 	template: function(model) {
-		var tmp = _.template('<span> <%= title %> </span><input class="remove" type="button" value="Удалить"><input class="toggle" type="button" value="Чек">');
+		var tmp = _.template('<span class="text"> <%= title %> </span><div class="btns"><button class="toggle btn btn-success" type="button"><i class="glyphicon glyphicon-ok"></i></button><button type="button" class="remove btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></div>');
 		return tmp(model)
 	},
 	onRender: function() {
