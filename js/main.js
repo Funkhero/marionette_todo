@@ -18,11 +18,15 @@ var TaskModel = Backbone.Model.extend({
 		}
 	},
 	toggle: function() {
-		this.set({ done:!this.get("done")});
+		this.save({ done:!this.get("done")});
+	},
+	fetch: function(){
+		 ajaxSync: true 
 	}
 });	
 
 var TasksCollection = Backbone.Collection.extend({
+	localStorage: new Backbone.LocalStorage("SomeCollection"),
 	model: TaskModel
 });
 
@@ -52,7 +56,7 @@ var Task = Marionette.View.extend({
 	},
 	editTask: function() {
 		var newTaskTitle = prompt('Изменить задачу', this.model.get('title'));
-		this.model.set({"title":newTaskTitle},{validate:true});﻿
+		this.model.save({"title":newTaskTitle},{validate:true});﻿
 	},
 	toggleDone: function(event) {
 		this.model.toggle();
