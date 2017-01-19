@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<style>
-	.done {text-decoration: line-through;opacity: .5;}
-	ul {list-style-type: none;margin: 0;padding: 0;}
-	li {width: 100%;margin: 10px 0;}
-	#application {width: 500px;text-align: center;margin: 0 auto;}
-	h1{text-transform: uppercase;font-family: sans-serif;}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,17 +14,25 @@
 
 </head>
 <body>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
+				
+				<div id="application">
+					<h1>Список задач</h1>
 
-	<div id="application">
-		<h1>Список задач</h1>
+					<form action="" id="addTask" method="get">
+						<input type="text" class="add form-control" placeholder="Ваша новая задача">
+						<button type="submit" class="addtask btn btn-default">Добавить</button>
+					</form>
+					
+					<div id="wrapper"></div>
+					
+				</div>
 
-		<form action="" id="addTask" method="get">
-			<input type="text" class="add" placeholder="Ваша новая задача">
-			<input type="submit" class="addtask" value="Добавить">
-		</form>
-		
-		<div id="wrapper"></div>
-		
+			</div>	
+		</div>
 	</div>
 	
 	<script src="js/jquery-3.1.1.js"></script>

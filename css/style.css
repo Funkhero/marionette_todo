@@ -1,0 +1,89 @@
+body
+
+.done  {
+    text-decoration:  line-through;
+    opacity:  .4;
+}
+
+.text {
+	display: flex;
+	float: left;
+	align-content: center;
+	max-width: 64%;
+	padding: 7px 0;
+}
+
+ul  {
+    list-style-type:  none;
+    margin:  0;
+    padding:  0;
+}
+
+li  {
+	display: block;
+    width:  100%;
+    margin:  5px 0;
+    float: right;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0,0,0, .2);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#application  {
+    width:  100%;
+    margin:  0 auto;
+}
+
+h1 {
+    text-transform:  uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btns {
+	display: inline-block;
+	float: right;
+}
+.add.form-control {
+	width: 80%;
+	float: left;
+}
+
+.remove {
+	
+}
+
+.toggle {
+	margin-right: 10px;
+}
+
+#addTask{
+	overflow: hidden;
+	margin-bottom: 20px;
+	padding: 10px 5px;
+	box-shadow: 0px 0px 5px rgba(0,0,0, .2);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.addtask {
+	float: right;
+}
+
+
+
+@media only screen and (max-width: 480px) {
+	.add.form-control {
+		width: 70%;
+		float: left;
+	}
+}
+
+
+@media only screen and (max-width: 330px) {
+	.add.form-control {
+		width: 65%;
+		float: left;
+	}
+}
