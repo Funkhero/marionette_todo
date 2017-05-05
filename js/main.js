@@ -1,5 +1,5 @@
 $(function() {
-	
+
 var TaskModel = Backbone.Model.extend({
 	initialize: function() {
 		if (!this.get("title")) {
@@ -23,12 +23,17 @@ var TaskModel = Backbone.Model.extend({
 	clear: function() {
       this.destroy();
     }
-});	
-
-var TasksCollection = Backbone.Collection.extend({
-	model: TaskModel,
-	localStorage: new Store("todos-backbone")
 });
+
+var TasksCollection = Backbone.Firebase.Collection.extend({
+	model: TaskModel,
+	url: 'https://todo-list-app-faabe.firebaseio.com/todos'
+});
+
+// var TasksCollection = Backbone.Collection.extend({
+// 	model: TaskModel,
+// 	localStorage: new Store("todos-backbone")
+// });
 
 var Task = Marionette.View.extend({
 	tagName: 'li',
@@ -45,15 +50,12 @@ var Task = Marionette.View.extend({
 	triggers: {
 		'click @ui.remove': 'remove:model',
 	},
+	template: _.template('<span class="text"> <%= title %> </span><div class="btns"><button class="toggle btn btn-success" type="button"><i class="glyphicon glyphicon-ok"></i></button><button type="button" class="remove btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></div>'),
 	initialize: function() {
 		
 	},
 	removeModel: function(event){
 		this.model.clear();
-	},
-	template: function(model) {
-		var tmp = _.template('<span class="text"> <%= title %> </span><div class="btns"><button class="toggle btn btn-success" type="button"><i class="glyphicon glyphicon-ok"></i></button><button type="button" class="remove btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></div>');
-		return tmp(model)
 	},
 	onRender: function() {
 		this.$el.toggleClass('done', this.model.get('done'));
@@ -76,7 +78,7 @@ var TaskCollectionView = Marionette.CollectionView.extend({
 		$('.addtask').on('click', _.bind(this.addTask, this));
 		this.collection.fetch();
 	},
-	onChildviewRemoveModel (view) {
+	onChildviewRemoveModel: function (view) {
 		this.collection.remove(view.model);
 	},
 	addTask: function (event) {
@@ -84,12 +86,12 @@ var TaskCollectionView = Marionette.CollectionView.extend({
 		var newTaskTitle = $('.add').val();
 		$('.add').val('');
 		if (!newTaskTitle) return;
-		this.collection.create({ title: newTaskTitle });
+		this.collection.add({ title: newTaskTitle });
 	}
 });
 
 var MyApp = Marionette.Application.extend({
-	region:  '#wrapper',
+	region: '#wrapper',
 	initialize: function() {
 		this.tasksCollection = new TasksCollection();
 

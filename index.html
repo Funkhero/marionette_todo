@@ -12,6 +12,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Backbone todo</title>
 
+
+
 </head>
 <body>
 	
@@ -20,7 +22,7 @@
 			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
 				
 				<div id="application">
-					<h1>Список задач</h1>
+					<!--<h1>Список задач</h1>-->
 
 					<form action="" id="addTask" method="get">
 						<input type="text" class="add form-control" placeholder="Ваша новая задача">
@@ -34,14 +36,33 @@
 			</div>	
 		</div>
 	</div>
-	
+	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyCEuBqBekq62Vmyb__fsHR3NQ2qHRHZbiU",
+			authDomain: "todo-list-app-faabe.firebaseapp.com",
+			databaseURL: "https://todo-list-app-faabe.firebaseio.com",
+			projectId: "todo-list-app-faabe",
+			storageBucket: "todo-list-app-faabe.appspot.com",
+			messagingSenderId: "1092476883954"
+		};
+		firebase.initializeApp(config);
+	</script>
+
 	<script src="js/jquery-3.1.1.js"></script>
 	<script src="js/underscore.js"></script>
 	<script src="js/backbone.js"></script>
 	<script src="js/backbone.radio.js"></script>
 	<script src="js/backbone.marionette.js"></script>
-	<script src="js/backbone.localStorage.js"></script>
+	<!--<script src="js/backbone.localStorage.js"></script>-->
+
+	<script src="https://cdn.firebase.com/js/client/2.0.3/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.js"></script>
+
 	<script src="js/main.js"></script>
+
+
 
 </body>
 </html>
