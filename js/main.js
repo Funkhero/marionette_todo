@@ -25,9 +25,39 @@ var TaskModel = Backbone.Model.extend({
     }
 });
 
+var provider = new firebase.auth.GoogleAuthProvider();
+
+	provider.addScope('https://www.googleapis.com/auth/plus.login');
+
+	provider.setCustomParameters({
+		'login_hint': 'user@example.com'
+	});
+
+	firebase.auth().signInWithPopup(provider).then(function(result) {
+		// This gives you a Google Access Token. You can use it to access the Google API.
+		var token = result.credential.accessToken;
+		// The signed-in user info.
+		var user = result.user;
+
+	}).catch(function(error) {
+		// Handle Errors here.
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		// The email of the user's account used.
+		var email = error.email;
+		// The firebase.auth.AuthCredential type that was used.
+		var credential = error.credential;
+
+	});
+
+
 var TasksCollection = Backbone.Firebase.Collection.extend({
 	model: TaskModel,
-	url: 'https://todo-list-app-faabe.firebaseio.com/todos'
+	url: 'https://marionette-todo-app.firebaseio.com/todos',
+	// initialize: function(){
+	// 	var self = this;
+	// 	self.firebase = "https://marionette-todo-app.firebaseio.com/todos" + window.User.id;
+	// }
 });
 
 // var TasksCollection = Backbone.Collection.extend({
@@ -62,7 +92,7 @@ var Task = Marionette.View.extend({
 	},
 	editTask: function() {
 		var newTaskTitle = prompt('Изменить задачу', this.model.get('title'));
-		this.model.save({"title":newTaskTitle},{validate:true});﻿
+		this.model.save({"title": _.escape(newTaskTitle)},{validate:true});﻿
 	},
 	toggleDone: function(event) {
 		this.model.toggle();
@@ -86,7 +116,8 @@ var TaskCollectionView = Marionette.CollectionView.extend({
 		var newTaskTitle = $('.add').val();
 		$('.add').val('');
 		if (!newTaskTitle) return;
-		this.collection.add({ title: newTaskTitle });
+		if (newTaskTitle.length > 100) return;
+		this.collection.add({ title: _.escape(newTaskTitle) });
 	}
 });
 
