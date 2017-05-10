@@ -25,39 +25,29 @@ var TaskModel = Backbone.Model.extend({
     }
 });
 
-var provider = new firebase.auth.GoogleAuthProvider();
 
-	provider.addScope('https://www.googleapis.com/auth/plus.login');
 
-	provider.setCustomParameters({
-		'login_hint': 'user@example.com'
-	});
+	// provider.addScope('https://www.googleapis.com/auth/plus.login');
 
-	firebase.auth().signInWithPopup(provider).then(function(result) {
-		// This gives you a Google Access Token. You can use it to access the Google API.
-		var token = result.credential.accessToken;
-		// The signed-in user info.
-		var user = result.user;
+	// provider.setCustomParameters({
+	// 	'login_hint': 'user@example.com'
+	// });
 
-	}).catch(function(error) {
-		// Handle Errors here.
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		// The email of the user's account used.
-		var email = error.email;
-		// The firebase.auth.AuthCredential type that was used.
-		var credential = error.credential;
+	$(document).on('click', 'h1', function (event) {
+		var provider = new firebase.auth.GoogleAuthProvider();
+		firebase.auth().signInWithPopup(provider).then(function(result) {
+			var token = result.credential.accessToken;
+			var user = result.user;
 
+			console.log(user.displayName);
+			$(event.currentTarget).html(user.displayName);
+		}).catch(function(error) {});
 	});
 
 
 var TasksCollection = Backbone.Firebase.Collection.extend({
 	model: TaskModel,
-	url: 'https://marionette-todo-app.firebaseio.com/todos',
-	// initialize: function(){
-	// 	var self = this;
-	// 	self.firebase = "https://marionette-todo-app.firebaseio.com/todos" + window.User.id;
-	// }
+	url: 'https://marionette-todo-app.firebaseio.com/todos'
 });
 
 // var TasksCollection = Backbone.Collection.extend({
