@@ -200,7 +200,7 @@ exports.default = Marionette.View.extend({
         return 'main view';
     },
     behaviors: [_hbs2.default],
-    HBTemplate: '/templates/layout.hbs',
+    HBTemplate: '../../templates/layout.hbs',
     className: 'main-app',
     regions: {
         list: {
