@@ -200,7 +200,7 @@ exports.default = Marionette.View.extend({
         return 'main view';
     },
     behaviors: [_hbs2.default],
-    HBTemplate: 'funkhero.github.io/marionette_todo/templates/layout.hbs',
+    HBTemplate: 'https://funkhero.github.io/marionette_todo/templates/layout.hbs',
     className: 'main-app',
     regions: {
         list: {
