@@ -1,6 +1,21 @@
-
-<h4 class="autorization__title">Добро пожаловать <br>в приложение <span>ToDo</span></h4>
-<input type="email" class="form-control email__input" placeholder="Email">
-<input type="password" class="form-control pass__input" placeholder="Password">
-<button class="authorization__btn btn btn-success btn-md"> Войти </button>
-<button class="registration__btn btn btn-default btn-md"> Зарегистрироватся </button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+            <div class="authorization__wrap">
+                <div class="authorization__block">
+                    <label class="authorization__error" for="email">Пожалуйста введите верный пароль</label>
+                    <input type="email" class="authorization__input email__input" placeholder="Email" autocomplete="on">
+                </div>
+                <div class="authorization__block">
+                    <label class="authorization__error" for="password"></label>
+                    <input type="password" class="authorization__input pass__input" placeholder="Password" autocomplete="on">
+                </div>
+                <div class="authorization__block authorization__block_btn">
+                    <button class="authorization__buttons authorization__btn"> Войти </button>
+                    <button class="authorization__buttons registration__btn"> Зарегистрироватся </button>
+                    <button class="authorization__google"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

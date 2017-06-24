@@ -1,17 +1,20 @@
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
-            <h1>Список задач</h1>
-            <p>Пользоваетль:
-                <span class="user-name">Неизвестный пользователь</span>
-                <button class="logout__btn btn btn-default btn-md"> Выход </button>
-            </p>
-            <form action="" id="addTask" method="get">
-                <input type="text" class="add form-control" placeholder="Ваша новая задача">
-                <button type="submit" class="addtask btn btn-default">Добавить</button>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+        <div class="user">
+            <div class="user__settings">
+                <div class="user__name">Неизвестный пользователь</div>
+                <div class="user__options">
+                    <button class="options__btn"><i class="i i-settings"></i></button>
+                    <button class="logout__btn"><i class="i i-logout"></i></button>
+                </div>
+            </div>
+            <form action="" class="user__form">
+                <input type="text" class="user__task" placeholder="Новая задача">
+                <button type="submit" class="user__addtask"><i class="i i-add"></i></button>
             </form>
-            <div id="wrapper"></div>
+            <div class="user__tasks"></div>
         </div>
     </div>
 </div>
