@@ -506,4 +506,5 @@ button { border: 0; padding: 0; outline: 0; display: inline-block; background-co
   .todo__header .header__logo { font-size: 40px; line-height: 42px; }
   .todo__header .logotype { height: 36px; }
   .todo__header .logotype__item { height: 5px; }
-  .todo__header .logotype__item:before { left: -16px; } }
+  .todo__header .logotype__item:before { left: -16px; }
+  .authorization { padding-top: 50px; } }
